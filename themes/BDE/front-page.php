@@ -73,7 +73,7 @@
             </div>
 
             <div class="event-card-hover">
-                <a href="" class="card-hover-text">
+                <a href="<?php the_permalink() ?>" class="card-hover-text">
                     <h1 class="title">En voir plus</h1>
                     <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
                         <g clip-path="url(#clip0_1_227)">
