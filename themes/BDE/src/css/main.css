@@ -269,6 +269,23 @@ hr {
     background-position: center;
 }
 
+.event-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.event-card .tags .tag {
+    background: var(--rose-75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .event-card .event-card-hover {
     color: white;
     z-index: 3;
