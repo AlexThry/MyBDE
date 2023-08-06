@@ -484,6 +484,21 @@ hr {
     margin-top: 50px;
 }
 
+.paginate-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+
+.paginate-links a,
+.paginate-links span {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--rose);
+    margin: 0 20px;
+}
+
 /* team page */
 
 .teams-section {
@@ -503,7 +518,7 @@ section.post .title {
     font-weight: 900;
     color: var(--rose);
     margin: auto;
-} 
+}
 
 section.post .content {
     width: 80%;
@@ -513,7 +528,35 @@ section.post .content {
     font-weight: 500;
 }
 
-.post h1, h2, h3, h4, h5, p, img, ul, ol, blockquote {
+.post .tags {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post .tags .tag {
+    background: var(--rose-75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post p,
+.post img,
+.post ul,
+.post ol,
+.post blockquote {
     margin-bottom: 20px;
 }
 
@@ -630,9 +673,14 @@ section.post .content {
     .event-card .description {
         font-size: 18px;
     }
+
 }
 
 @media screen and (max-width: 1000px) {
+    .sign-up-button {
+        margin-left: 0;
+    }
+    
     .event-card {
         flex-direction: column;
     }
@@ -700,6 +748,7 @@ section.post .content {
 
     .nav-title {
         margin-left: 10px;
+        font-size: 30px;
     }
 
     .nav-buttons {

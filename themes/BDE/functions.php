@@ -26,6 +26,8 @@ add_action('wp_enqueue_scripts', 'bde_enqueue_scripts');
 function bde_custom_post_types() {
     register_post_type('event', array(
         'public' => true,
+        'capability_type' => 'event',
+        'map_meta_cap' => true, 
         'labels' => array(
             'name' => 'Evenements',
             'add_new_item' => 'Ajouter un nouvel evenement',
@@ -48,6 +50,8 @@ function bde_custom_post_types() {
 
     register_post_type('team', array(
         'public' => true,
+        'capability_type' => 'team',
+        'map_meta_cap' => true,
         'labels' => array(
             'name' => 'Equipes',
             'add_new_item' => 'Ajouter une nouvelle equipe',
@@ -69,3 +73,25 @@ function bde_custom_post_types() {
 }
 
 add_action('init', 'bde_custom_post_types');
+
+
+//redirect subscriber accounts out of admin and onto homepage
+
+add_action('admin_init', 'redirectSubsToFrontend');
+
+function redirectSubsToFrontend() {
+    $user = wp_get_current_user();
+    if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
+        wp_redirect(site_url('/'));
+        exit;
+    }
+}
+
+add_action('wp_loaded', 'noSubsAdminBar');
+
+function noSubsAdminBar() {
+    $user = wp_get_current_user();
+    if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
+        show_admin_bar(false);
+    }
+}
