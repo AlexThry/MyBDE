@@ -23,10 +23,10 @@
             <?php endif ?>
             <?php if (is_user_logged_in()) : ?>
                 <a href="" class="button sign-up-button">Mon profile</a>
-                <a href="<?php echo wp_logout_url() ?>" class="connection-button"><span>Logout</span></a>
+                <a href="<?php echo wp_logout_url( home_url() ) ?>" class="connection-button"><span>Logout</span></a>
             <?php else : ?>
-                <a href="<?php echo site_url("/sign-up") ?>" class="button sign-up-button">Sign-up</a>
-                <a href="<?php echo site_url("/login") ?>" class="connection-button"><span>Connect</span></a>
+                <a href="<?php echo wp_registration_url() ?>" class="button sign-up-button">Sign-up</a>
+                <a href="<?php echo wp_login_url() ?>" class="connection-button"><span>Login</span></a>
             <?php endif ?>
 
         </div>

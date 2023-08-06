@@ -84,6 +84,9 @@ function redirectSubsToFrontend() {
     if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
         wp_redirect(site_url('/'));
         exit;
+    } else if (count($user->roles) == 1 && $user->roles[0] == 'adherant') {
+        wp_redirect(site_url('/'));
+        exit;
     }
 }
 
@@ -93,5 +96,22 @@ function noSubsAdminBar() {
     $user = wp_get_current_user();
     if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
         show_admin_bar(false);
+
+    } else if (count($user->roles) == 1 && $user->roles[0] == 'adherant') {
+        show_admin_bar(false);
     }
+}
+
+//customize login screen
+
+add_filter('login_headerurl', 'bdeHeaderUrl');
+
+function bdeHeaderUrl() {
+    return esc_url(site_url('/'));
+}
+
+add_action('login_enqueue_scripts', 'bdeLoginCSS');
+
+function bdeLoginCSS() {
+    bde_enqueue_styles();
 }

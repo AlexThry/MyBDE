@@ -596,11 +596,109 @@ section.post .content {
 }
 
 
+/* login */
+
+input:-internal-autofill-selected {
+    background-color: transparent !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+}
+
+.login {
+    background-color: white;
+}
+
+.login #loginform, 
+.login #registerform {
+    height: fit-content;
+    width: 50%;
+    max-width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 50px;
+    justify-content: center;
+}
+
+.login #loginform p, 
+.login #registerform p {
+    width: 100%;
+}
+
+.login h1 a {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUat9twARS2aZBt2lnANIijequziyWrB2lpmHJ2fm6CYNx8-Tv66d2MDSW3_5ktiUqhRM&usqp=CAU");
+}
 
 
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="email"],
+.login input[type="submit"] {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--rose);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px
+}
 
+.login .user-pass-wrap {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin: auto;
+    font-family: 'Inter' !important;
+}
 
+.login .forgetmenot {
+    margin-bottom: 10px !important;
+}
 
+.login .submit input[type="submit"] {
+    background: var(--rose);
+    width: 100%;
+    border-radius: 10px;
+    font-size: 24px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 75ms ease-in-out;
+}
+    
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+    stroke: none;
+    outline: none;
+}
+
+.login .wp-pwd {
+    display: flex;
+    align-items: center;
+}
+.wp-hide-pw {
+    position: inherit;
+}
+
+.login .message {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 500;
+}
 
 @keyframes slide-left {
     0% {
@@ -680,7 +778,7 @@ section.post .content {
     .sign-up-button {
         margin-left: 0;
     }
-    
+
     .event-card {
         flex-direction: column;
     }
