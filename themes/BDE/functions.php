@@ -33,6 +33,7 @@ function bde_custom_post_types() {
             'all_items' => 'Tous les evenements',
             'singular_name' => 'Enevement',
         ),
+        'taxonomies' => array('category'),
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-calendar-alt',
         'supports' => array(

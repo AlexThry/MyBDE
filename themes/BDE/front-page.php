@@ -67,6 +67,17 @@
                 <p class="description">
                     <?php echo get_field('event_description') ?>
                 </p>
+                <div class="tags">
+                    <?php
+                    $event_id = get_the_ID();
+                    $tags = get_the_category();
+                    foreach ($tags as $tag) :
+                    ?>
+                        <span class="tag">
+                            <?php echo $tag->name ?>
+                        </span>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="event-card-img" style="background-image: url(<?php echo get_field('event_illustration') ?>);">
 
@@ -162,6 +173,17 @@
                     <p class="description">
                         <?php echo get_field('event_description') ?>
                     </p>
+                    <div class="tags">
+                    <?php
+                    $event_id = get_the_ID();
+                    $tags = get_the_category();
+                    foreach ($tags as $tag) :
+                    ?>
+                        <span class="tag">
+                            <?php echo $tag->name ?>
+                        </span>
+                    <?php endforeach; ?>
+                </div>
                 </div>
                 <div class="event-card-img" style="background-image: url(<?php echo get_field('event_illustration') ?>;">
 
