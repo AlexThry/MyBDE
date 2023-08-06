@@ -2,7 +2,7 @@
 
 <section class="teams-section">
     <h1 class="section-title">
-        Futurs Évènements
+    Les équipes du BDE
     </h1>
     <hr>
 
