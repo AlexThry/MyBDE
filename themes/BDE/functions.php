@@ -33,6 +33,7 @@ function bde_custom_post_types() {
             'all_items' => 'Tous les evenements',
             'singular_name' => 'Enevement',
         ),
+        'has_archive' => 'events',
         'taxonomies' => array('category'),
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-calendar-alt',
@@ -54,6 +55,7 @@ function bde_custom_post_types() {
             'all_items' => 'Toutes les equipes',
             'singular_name' => 'Equipe',
         ),
+        'has_archive' => 'teams',
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-groups',
         'supports' => array(

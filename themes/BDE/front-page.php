@@ -69,7 +69,6 @@
                 </p>
                 <div class="tags">
                     <?php
-                    $event_id = get_the_ID();
                     $tags = get_the_category();
                     foreach ($tags as $tag) :
                     ?>
@@ -175,7 +174,6 @@
                     </p>
                     <div class="tags">
                     <?php
-                    $event_id = get_the_ID();
                     $tags = get_the_category();
                     foreach ($tags as $tag) :
                     ?>
@@ -209,7 +207,7 @@
         <?php endwhile; ?>
 
         <div class="see-more">
-            <a href="">
+            <a href="<?php echo site_url('/events') ?>">
                 En voir plus
             </a>
             <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
@@ -270,7 +268,7 @@
     <?php endwhile; ?>
 
     <div class="see-more">
-        <a href="">
+        <a href="<?php echo site_url('/teams') ?>">
             En voir plus
         </a>
         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
