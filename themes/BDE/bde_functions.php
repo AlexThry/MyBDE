@@ -135,3 +135,57 @@ function get_all_teams() {
     return null;
 
 };
+
+function get_tag_color($tag) {
+    switch ($tag->name) {
+        case "Annecy/Chambéry":
+            $color = "#d0006f";
+            break;
+        case "Clermont-Ferrand":
+            $color = "#7fc241";
+            break;
+        case "Grenoble":
+            $color = "#b89773";
+            break;
+        case "Lille":
+            $color = "#ed1a3b";
+            break;
+        case "Marseille":
+            $color = "#05aabc";
+            break;
+        case "Montpellier":
+            $color = "#2883c5";
+            break;
+        case "Nantes":
+            $color = "#ffdc00";
+            break;
+        case "Nice":
+            $color = "#bfd632";
+            break;
+        case "Orléans":
+            $color = "#f7931d";
+            break;
+        case "Paris":
+            $color = "#9593ab";
+            break;
+        case "Tours":
+            $color = "#a153a1";
+            break;
+        default:
+            $color = "#d0006f";
+    }
+
+    return $color;
+}
+
+function display_tags($tags) {
+    if ($tags) {
+        echo "<div class='tags'>";
+        
+        foreach ($tags as $tag) {
+            $color = get_tag_color($tag);
+            echo "<span class='tag' style='background-color: $color'>$tag->name</span>";
+        }
+        echo "</div>";
+    }
+}

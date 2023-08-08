@@ -7,9 +7,9 @@
         <span class="scroll-content">
             Nouveau
         </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
-                <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
-            </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
+            <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
+        </svg>
     </div>
 
     <div class="scroll-wrapper">
@@ -67,16 +67,10 @@
                 <p class="description">
                     <?php echo get_field('event_description') ?>
                 </p>
-                <div class="tags">
-                    <?php
-                    $tags = get_the_category();
-                    foreach ($tags as $tag) :
-                    ?>
-                        <span class="tag">
-                            <?php echo $tag->name ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
+                <?php
+                $tags = get_the_category();
+                display_tags($tags);
+                ?>
             </div>
             <div class="event-card-img" style="background-image: url(<?php echo get_field('event_illustration') ?>);">
 
@@ -105,9 +99,9 @@
         <span class="scroll-content">
             Nouveau
         </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
-                <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
-            </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
+            <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
+        </svg>
     </div>
 
     <div class="scroll-wrapper">
@@ -172,16 +166,10 @@
                     <p class="description">
                         <?php echo get_field('event_description') ?>
                     </p>
-                    <div class="tags">
                     <?php
                     $tags = get_the_category();
-                    foreach ($tags as $tag) :
+                    display_tags($tags);
                     ?>
-                        <span class="tag">
-                            <?php echo $tag->name ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
                 </div>
                 <div class="event-card-img" style="background-image: url(<?php echo get_field('event_illustration') ?>;">
 
@@ -206,21 +194,25 @@
 
         <?php endwhile; ?>
 
-        <div class="see-more">
-            <a href="<?php echo site_url('/events') ?>">
-                En voir plus
-            </a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
-                <g clip-path="url(#clip0_1_227)">
-                    <path d="M48 16L42.36 21.64L64.68 44H16V52H64.68L42.36 74.36L48 80L80 48L48 16Z" />
-                </g>
-                <defs>
-                    <clipPath id="clip0_1_227">
-                        <rect width="96" height="96" />
-                    </clipPath>
-                </defs>
-            </svg>
-        </div>
+        <?php if (wp_count_posts('event')->publish > 4) : ?>
+
+            <div class="see-more">
+                <a href="<?php echo site_url('/events') ?>">
+                    En voir plus
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
+                    <g clip-path="url(#clip0_1_227)">
+                        <path d="M48 16L42.36 21.64L64.68 44H16V52H64.68L42.36 74.36L48 80L80 48L48 16Z" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_1_227">
+                            <rect width="96" height="96" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+
+        <?php endif ?>
 
     <?php else : ?>
 
@@ -267,21 +259,25 @@
 
     <?php endwhile; ?>
 
-    <div class="see-more">
-        <a href="<?php echo site_url('/teams') ?>">
-            En voir plus
-        </a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
-            <g clip-path="url(#clip0_1_227)">
-                <path d="M48 16L42.36 21.64L64.68 44H16V52H64.68L42.36 74.36L48 80L80 48L48 16Z" />
-            </g>
-            <defs>
-                <clipPath id="clip0_1_227">
-                    <rect width="96" height="96" />
-                </clipPath>
-            </defs>
-        </svg>
-    </div>
+    <?php if (wp_count_posts('team')->publish > 3) : ?>
+
+        <div class="see-more">
+            <a href="<?php echo site_url('/teams') ?>">
+                En voir plus
+            </a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
+                <g clip-path="url(#clip0_1_227)">
+                    <path d="M48 16L42.36 21.64L64.68 44H16V52H64.68L42.36 74.36L48 80L80 48L48 16Z" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_1_227">
+                        <rect width="96" height="96" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+
+    <?php endif ?>
 
 
 </section>

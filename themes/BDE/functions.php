@@ -94,10 +94,9 @@ add_action('wp_loaded', 'noSubsAdminBar');
 
 function noSubsAdminBar() {
     $user = wp_get_current_user();
-    if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
-        show_admin_bar(false);
-
-    } else if (count($user->roles) == 1 && $user->roles[0] == 'adherant') {
+    if (in_array('administrator', $user->roles)) {
+        show_admin_bar(true);
+    } else {
         show_admin_bar(false);
     }
 }
@@ -115,3 +114,12 @@ add_action('login_enqueue_scripts', 'bdeLoginCSS');
 function bdeLoginCSS() {
     bde_enqueue_styles();
 }
+
+$register_link = site_url('/registration');
+
+add_filter('register', 'register_redirect_link');
+
+function register_redirect_link() {
+    return '<a href="' . site_url('/registration') . '">Inscription</a>';
+}
+

@@ -120,6 +120,17 @@ hr {
     margin-left: 30px;
 }
 
+.user-name {
+    cursor: default;
+    padding: 7px 18px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .header {
     height: calc(100vh-var(--nav-bar-height));
     display: flex;
@@ -278,7 +289,6 @@ hr {
 }
 
 .event-card .tags .tag {
-    background: var(--rose-75);
     color: white;
     padding: 5px 10px;
     border-radius: 8px;
@@ -547,6 +557,20 @@ section.post .content {
     font-weight: 700;
 }
 
+.post a {
+    border: 2px solid var(--rose);
+    background-color: white;
+    color: var(--rose);
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-weight: 700;
+}
+
+.post a:hover {
+    background-color: var(--rose);
+    color: white;
+}
+
 .post h1,
 .post h2,
 .post h3,
@@ -598,6 +622,129 @@ section.post .content {
 
 /* login */
 
+
+.user-registration {
+    height: fit-content;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 50px;
+    justify-content: center;
+}
+
+.input-text {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px !important;
+    border: 2px solid var(--rose);
+    border-radius: 10px;
+    padding: 0 20px;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.ur-submit-button {
+    width: 100%;
+    margin: 10px 0 !important;
+    height: 50px;
+    border-radius: 10px !important;
+    border: 2px solid var(--rose) !important;
+    border-radius: 10px;
+    padding: 5px 20px !important;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    background-color: var(--rose);
+    color: white;
+    cursor: pointer;
+    transition: none !important;
+}
+
+.field-user_pass.password,
+.field-user_email,
+.field-user_confirm_password.confirm-password {
+    position: relative;
+}
+
+.field-user_pass.password label,
+.field-user_email label.ur-label,
+.field-user_confirm_password.confirm-password label.ur-label {
+    color: var(--rose);
+    position: absolute;
+    top: -14px !important;
+    left: 20px;
+    z-index: 10;
+    font-size: 10px !important;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.ur-submit-button:hover {
+    color: var(--rose);
+    background-color: white;
+}
+
+
+.user-registration-error {
+    background-color: var(--rose-25) !important;
+    color: #000 !important;
+    border: none !important;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px !important;
+    border-radius: 10px;
+}
+
+
+
+.user-registration-password-strength {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: var(--rose-25) !important;
+}
+
+.user-registration-error {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.user-registration-password-hint {
+    display: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 input:-internal-autofill-selected {
     background-color: transparent !important;
     font-size: 24px !important;
@@ -608,7 +755,7 @@ input:-internal-autofill-selected {
     background-color: white;
 }
 
-.login #loginform, 
+.login #loginform,
 .login #registerform {
     height: fit-content;
     width: 50%;
@@ -628,12 +775,19 @@ input:-internal-autofill-selected {
     justify-content: center;
 }
 
-.login #loginform p, 
+.login #loginform p,
 .login #registerform p {
     width: 100%;
 }
 
-.login h1 a {
+.login h1:first-child {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login h1:first-child a {
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUat9twARS2aZBt2lnANIijequziyWrB2lpmHJ2fm6CYNx8-Tv66d2MDSW3_5ktiUqhRM&usqp=CAU");
 }
 
@@ -664,30 +818,97 @@ input:-internal-autofill-selected {
     margin-bottom: 10px !important;
 }
 
+.login input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    border: solid 2px var(--rose);
+}
+
+.login input:focus {
+    box-shadow: none !important;
+}
+
+.login input[type="checkbox"]:checked {
+    background-color: var(--rose);
+}
+
+.login input[type="checkbox"]:checked::before {
+    content: "";
+}
+
+#loginform .user-pass-wrap label,
+#loginform p:first-child label {
+    color: var(--rose) !important;
+    position: absolute;
+    font-size: 10px;
+    background-color: white;
+    padding: 0 4px;
+    z-index: 10;
+    top: -6px;
+    left: 20px;
+}
+
+.user-pass-wrap {
+    position: relative;
+}
+
+#loginform p:first-child {
+    position: relative;
+}
+
 .login .submit input[type="submit"] {
     background: var(--rose);
     width: 100%;
     border-radius: 10px;
     font-size: 24px;
     color: white;
-    border: none;
+    border: 2px solid var(--rose);
     cursor: pointer;
-    transition: all 75ms ease-in-out;
 }
-    
 
-.login input[type="text"]:focus,
-.login input[type="password"]:focus {
-    stroke: none;
-    outline: none;
+.login .submit input[type="submit"]:hover {
+    background-color: white;
+    color: var(--rose);
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+    color: var(--rose);
+}
+
+.wp-core-ui .button:hover,
+.wp-core-ui .button-secondary:hover {
+    color: var(--rose-25);
 }
 
 .login .wp-pwd {
     display: flex;
     align-items: center;
 }
+
+.shake {
+    animation: none !important;
+}
+
+#login_error {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25) !important;
+}
+
 .wp-hide-pw {
     position: inherit;
+}
+
+.login #nav {
+    position: absolute;
+    top: 70%;
+}
+
+.login #backtoblog {
+    position: absolute;
+    top: 74%;
 }
 
 .login .message {
@@ -809,6 +1030,10 @@ input:-internal-autofill-selected {
 }
 
 @media screen and (max-width: 768px) {
+
+    #loginform {
+        width: 90% !important;
+    }
 
     .button,
     .connection-button {
