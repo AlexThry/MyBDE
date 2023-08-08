@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: 'Inter';
+    font-family: 'Inter' !important;
 }
 
 a {
@@ -62,17 +62,26 @@ hr {
     font-size: 36px;
 }
 
+
 .nav-buttons {
     margin-right: 30px;
+    display: flex;
 }
 
 .button {
+    display: flex;
+    align-items: center;
     font-weight: 600;
     font-size: 24px;
     border: black 2px solid;
     border-radius: var(--border-radius-md);
     padding: 7px 18px;
     margin: 0 6px;
+}
+
+.button svg,
+.connection-button svg {
+    margin-left: 5px;
 }
 
 .light-button {
@@ -623,7 +632,7 @@ section.post .content {
 /* login */
 
 
-.user-registration {
+.user-registration.ur-frontend-form   {
     height: fit-content;
     width: 50%;
     max-width: 500px;
@@ -838,6 +847,10 @@ input:-internal-autofill-selected {
     content: "";
 }
 
+.password_preview {
+    color: var(--rose);
+}
+
 #loginform .user-pass-wrap label,
 #loginform p:first-child label {
     color: var(--rose) !important;
@@ -920,6 +933,63 @@ input:-internal-autofill-selected {
     font-size: 12px;
     font-weight: 500;
 }
+
+.user-registration-message {
+    width: 80%;
+    margin-bottom: 10px !important;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+/* Dashboard */
+
+
+
+.logged-in .user-registration {
+    width: 90%;
+    background-color: white;
+    margin: 50px auto !important;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.user-registration-MyAccount-navigation {
+    background-color: var(--rose-25) !important;
+    border-radius: 10px 0 0 10px;
+}
+
+#user-registration.vertical .user-registration-MyAccount-navigation ul .user-registration-MyAccount-navigation-link.is-active a  {
+    background-color: var(--rose-50) !important;
+    border-color: var(--rose) !important;
+}
+
+.user-registration-MyAccount-navigation-link--dashboard a {
+    border-radius: 10px 0 0 0 !important;
+}
+
+fieldset {
+    border: none;
+}
+
+#ur-frontend-form > form > div > div > p > input.user-registration-Button.button {
+    color: var(--rose) !important;
+    background-color: transparent;
+    transition: none;
+}
+
+#ur-frontend-form > form > div > div > p > input.user-registration-Button.button:hover {
+    color: white !important;
+    background-color: var(--rose);
+    transition: none;
+}
+
 
 @keyframes slide-left {
     0% {
@@ -1098,4 +1168,21 @@ input:-internal-autofill-selected {
     .event-card .description {
         font-size: 18px;
     }
+}
+
+
+
+
+
+
+
+
+/* Tailwind class */
+
+.w-5 {
+    width: 1.25rem;
+}
+
+.h-5 {
+    height: 1.25rem;
 }
