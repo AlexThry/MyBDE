@@ -23,16 +23,10 @@
                 <p class="description">
                     <?php echo get_field('event_description') ?>
                 </p>
-                <div class="tags">
-                    <?php
-                    $tags = get_the_category();
-                    foreach ($tags as $tag) :
-                    ?>
-                        <span class="tag">
-                            <?php echo $tag->name ?>
-                        </span>
-                    <?php endforeach; ?>
-                </div>
+                <?php
+                $tags = get_the_category();
+                display_tags($tags);
+                ?>
             </div>
             <div class="event-card-img" style="background-image: url(<?php echo get_field('event_illustration') ?>;">
 
