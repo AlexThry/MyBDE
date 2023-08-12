@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 include_once('bde_functions.php');
 
-function bde_theme_support() {
+function bde_theme_support()
+{
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('custom-logo');
@@ -11,23 +12,26 @@ function bde_theme_support() {
 
 add_action('after_setup_theme', 'bde_theme_support');
 
-function bde_enqueue_styles() {
+function bde_enqueue_styles()
+{
     wp_enqueue_style('bde-main-style', get_theme_file_uri('/src/css/main.css'), null, microtime());
 }
 
 add_action('wp_enqueue_scripts', 'bde_enqueue_styles');
 
-function bde_enqueue_scripts() {
+function bde_enqueue_scripts()
+{
     wp_enqueue_script('bde-main-script', get_theme_file_uri('/src/js/main.js'), null, microtime(), true);
 }
 
 add_action('wp_enqueue_scripts', 'bde_enqueue_scripts');
 
-function bde_custom_post_types() {
+function bde_custom_post_types()
+{
     register_post_type('event', array(
         'public' => true,
         'capability_type' => 'event',
-        'map_meta_cap' => true, 
+        'map_meta_cap' => true,
         'labels' => array(
             'name' => 'Evenements',
             'add_new_item' => 'Ajouter un nouvel evenement',
@@ -79,7 +83,8 @@ add_action('init', 'bde_custom_post_types');
 
 add_action('admin_init', 'redirectSubsToFrontend');
 
-function redirectSubsToFrontend() {
+function redirectSubsToFrontend()
+{
     $user = wp_get_current_user();
     if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
         wp_redirect(site_url('/'));
@@ -92,7 +97,8 @@ function redirectSubsToFrontend() {
 
 add_action('wp_loaded', 'noSubsAdminBar');
 
-function noSubsAdminBar() {
+function noSubsAdminBar()
+{
     $user = wp_get_current_user();
     if (in_array('administrator', $user->roles)) {
         show_admin_bar(true);
@@ -105,13 +111,15 @@ function noSubsAdminBar() {
 
 add_filter('login_headerurl', 'bdeHeaderUrl');
 
-function bdeHeaderUrl() {
+function bdeHeaderUrl()
+{
     return esc_url(site_url('/'));
 }
 
 add_action('login_enqueue_scripts', 'bdeLoginCSS');
 
-function bdeLoginCSS() {
+function bdeLoginCSS()
+{
     bde_enqueue_styles();
 }
 
@@ -119,7 +127,7 @@ $register_link = site_url('/registration');
 
 add_filter('register', 'register_redirect_link');
 
-function register_redirect_link() {
+function register_redirect_link()
+{
     return '<a href="' . site_url('/registration') . '">Inscription</a>';
 }
-

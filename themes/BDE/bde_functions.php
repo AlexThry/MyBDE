@@ -1,6 +1,7 @@
 <?php
 
-function get_last_event() {
+function get_last_event()
+{
     $events = new WP_Query(array(
         'post_type' => 'event',
         'posts_per_page' => 1,
@@ -25,7 +26,8 @@ function get_last_event() {
     return null;
 }
 
-function get_front_page_events() {
+function get_front_page_events()
+{
     $events = new WP_Query(array(
         'post_type' => 'event',
         'posts_per_page' => 3,
@@ -51,7 +53,8 @@ function get_front_page_events() {
     return null;
 }
 
-function get_upcomming_events() {
+function get_upcomming_events()
+{
     $events = new WP_Query(array(
         'post_type' => 'event',
         'posts_per_page' => 10,
@@ -76,7 +79,8 @@ function get_upcomming_events() {
     return null;
 }
 
-function get_past_events() {
+function get_past_events()
+{
     $events = new WP_Query(array(
         'post_type' => 'event',
         'posts_per_page' => 3,
@@ -101,14 +105,15 @@ function get_past_events() {
     return null;
 }
 
-function get_front_page_teams() {
+function get_front_page_teams()
+{
     $teams = new WP_Query(array(
         'post_type' => 'team',
         'posts_per_page' => 3,
         'show_on_front_page' => true,
         'order' => 'DESC',
     ));
-    
+
     wp_reset_query();
 
     if ($teams) {
@@ -116,16 +121,16 @@ function get_front_page_teams() {
     }
 
     return null;
-
 };
 
-function get_all_teams() {
+function get_all_teams()
+{
     $teams = new WP_Query(array(
         'post_type' => 'team',
         'posts_per_page' => 10,
         'order' => 'DESC',
     ));
-    
+
     wp_reset_query();
 
     if ($teams) {
@@ -133,14 +138,11 @@ function get_all_teams() {
     }
 
     return null;
-
 };
 
-function get_tag_color($tag) {
+function get_tag_color($tag)
+{
     switch ($tag->name) {
-        case "Annecy/Chambéry":
-            $color = "#d0006f";
-            break;
         case "Clermont-Ferrand":
             $color = "#7fc241";
             break;
@@ -178,10 +180,11 @@ function get_tag_color($tag) {
     return $color;
 }
 
-function display_tags($tags) {
+function display_tags($tags)
+{
     if ($tags) {
         echo "<div class='tags'>";
-        
+
         foreach ($tags as $tag) {
             $color = get_tag_color($tag);
             echo "<span class='tag' style='background-color: $color'>$tag->name</span>";
