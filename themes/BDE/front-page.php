@@ -7,9 +7,6 @@
         <span class="scroll-content">
             Nouveau
         </span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
-            <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
-        </svg>
     </div>
 
     <div class="scroll-wrapper">
@@ -99,9 +96,6 @@
         <span class="scroll-content">
             Nouveau
         </span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="scroll-content" width="80" height="64" viewBox="0 0 80 64" fill="none">
-            <path d="M72 0H8C3.56 0 0.04 3.56 0.04 8L0 56C0 60.44 3.56 64 8 64H72C76.44 64 80 60.44 80 56V8C80 3.56 76.44 0 72 0ZM26 44H21.2L11 30V44H6V20H11L21 34V20H26V44ZM46 25.04H36V29.52H46V34.56H36V39H46V44H30V20H46V25.04ZM74 40C74 42.2 72.2 44 70 44H54C51.8 44 50 42.2 50 40V20H55V38.04H59.52V23.96H64.52V38H69V20H74V40Z" />
-        </svg>
     </div>
 
     <div class="scroll-wrapper">

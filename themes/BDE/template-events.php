@@ -13,7 +13,7 @@
     </h1>
     <hr>
     <?php
-    if (is_page("evenements")) {
+    if (is_page("futurs-evenements")) {
         $events = get_upcomming_events();
     } elseif (is_page("evenements-passes")) {
         $events = get_past_events();
@@ -75,8 +75,8 @@
     ?>
 
     <div class="see-more">
-        <a href="<?= is_page("evenements") ? site_url("/evenements-passes") : site_url("/evenements") ?>">
-            <?= is_page("evenements") ? "Voir les evenements passés" : "Voir les evenements à venir" ?>
+        <a href="<?= is_page("futurs-evenements") ? site_url("/evenements-passes") : site_url("/futurs-evenements") ?>">
+            <?= is_page("futurs-evenements") ? "Voir les evenements passés" : "Voir les evenements à venir" ?>
         </a>
         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
             <g clip-path="url(#clip0_1_227)">

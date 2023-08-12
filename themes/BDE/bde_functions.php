@@ -144,40 +144,40 @@ function get_tag_color($tag)
 {
     switch ($tag->name) {
         case "Event rézo":
-            $color = "linear-gradient(130deg, #9593ab, #a153a1, #d0006f, #ed1a3b, #f7931d, #ffdc00, #bfd632, #7fc241)";
+            $color = "linear-gradient(130deg, #8D89A5, #8C4799, #D0006F, #BF0D3E, #E87722, #FFCD00, #C4D600, #78BE20)";
             break;
         case "Clermont-Ferrand":
-            $color = "#7fc241";
+            $color = "#78BE20";
             break;
         case "Grenoble":
-            $color = "#b89773";
+            $color = "#AA8066";
             break;
         case "Lille":
-            $color = "#ed1a3b";
+            $color = "#BF0D3E";
             break;
         case "Marseille":
-            $color = "#05aabc";
+            $color = "#008EAA";
             break;
         case "Montpellier":
-            $color = "#2883c5";
+            $color = "#418FDE";
             break;
         case "Nantes":
-            $color = "#ffdc00";
+            $color = "#FFCD00";
             break;
         case "Nice":
-            $color = "#bfd632";
+            $color = "#C4D600"; 
             break;
         case "Orléans":
-            $color = "#f7931d";
+            $color = "#E87722";
             break;
         case "Paris":
-            $color = "#9593ab";
+            $color = "#8D89A5";
             break;
         case "Tours":
-            $color = "#a153a1";
+            $color = "#8C4799";
             break;
         default:
-            $color = "#d0006f";
+            $color = "#D0006F";
     }
     return $color;
 }
