@@ -143,6 +143,9 @@ function get_all_teams()
 function get_tag_color($tag)
 {
     switch ($tag->name) {
+        case "Event rézo":
+            $color = "linear-gradient(130deg, #9593ab, #a153a1, #d0006f, #ed1a3b, #f7931d, #ffdc00, #bfd632, #7fc241)";
+            break;
         case "Clermont-Ferrand":
             $color = "#7fc241";
             break;
@@ -176,7 +179,6 @@ function get_tag_color($tag)
         default:
             $color = "#d0006f";
     }
-
     return $color;
 }
 
@@ -184,10 +186,10 @@ function display_tags($tags)
 {
     if ($tags) {
         echo "<div class='tags'>";
-
+        
         foreach ($tags as $tag) {
             $color = get_tag_color($tag);
-            echo "<span class='tag' style='background-color: $color'>$tag->name</span>";
+            echo "<span class='tag' style='background: $color'>$tag->name</span>";
         }
         echo "</div>";
     }
