@@ -10,6 +10,7 @@
     --border-radius-lg: 20px;
     --title-text: 900 72px 'Inter';
     --nav-bar-height: 80px;
+    --button-padding: 8px 18px;
 }
 
 #wp-auth-check-frame {
@@ -115,7 +116,7 @@ hr {
     font-size: 24px;
     border: black 2px solid;
     border-radius: var(--border-radius-md);
-    padding: 7px 18px;
+    padding: var(--button-padding);
     margin: 0 6px;
 }
 
@@ -160,7 +161,7 @@ hr {
 
 .connection-button span {
     background-color: var(--rose);
-    padding: 8px 18px;
+    padding: var(--button-padding);
     border-radius: var(--border-radius-md);
 }
 
@@ -187,6 +188,8 @@ hr {
 .header {
     height: calc(100vh - var(--nav-bar-height));
     display: flex;
+    padding: 40px 0;
+    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -1006,6 +1009,54 @@ input:-internal-autofill-selected {
 
 }
 
+.login h1:first-child {
+    display: none;
+}
+
+#lostpasswordform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-radius-md);
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+#resetpassform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-radius-md);
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+#resetpassform>div>div.wp-pwd.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pass-strength-result {
+    border: none;
+    border-radius: var(--border-radius-md);
+    margin-top: 10px !important;
+}
+
+#resetpassform>p.submit.reset-pass-submit>button {
+    border: 2px solid var(--rose) !important;
+    border-radius: var(--border-radius-md) !important;
+    background-color: white !important;
+    color: var(--rose) !important;
+}
+
+#resetpassform>p.submit.reset-pass-submit>button:hover {
+    background-color: var(--rose) !important;
+    color: white !important;
+}
+
 /* Dashboard */
 
 nav.user-registration-MyAccount-navigation li a:hover {
@@ -1092,15 +1143,6 @@ fieldset {
         width: 90%;
     }
 
-    .event-card .tag {
-        padding: 3px 5px;
-        border-radius: 8px;
-        margin-right: 8px;
-        margin-bottom: 6px;
-        font-size: 10px;
-        font-weight: 500;
-    }
-
     .event-card .title {
         font-size: 60px;
     }
@@ -1123,8 +1165,14 @@ fieldset {
         width: 90%;
     }
 
-    .event-card .title {
+    .event-card .title,
+    .team-card .team-name {
         font-size: 48px;
+    }
+
+    .card-hover-text>svg {
+        width: 48px;
+        height: 48px;
     }
 
     .event-card .date {
@@ -1135,6 +1183,9 @@ fieldset {
         font-size: 18px;
     }
 
+    .light-button {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -1160,22 +1211,95 @@ fieldset {
         height: 50%;
     }
 
-    .light-button {
-        display: none;
+    .team-card {
+        height: 40vh;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #loginform {
+        width: 90% !important;
     }
 
-    .card-hover-text>.title {
+    .team-card {
+        height: 30vh;
+    }
+
+    .button,
+    .connection-button {
+        font-size: 18px;
+    }
+
+    hr {
+        width: 90%;
+    }
+
+    .section-title {
+        width: 90%;
+    }
+
+    .event-card {
+        width: 97%;
+    }
+
+    .scroll-wrapper {
+        width: 97%;
+    }
+
+    .scroll-wrapper span {
+        font-size: 92px;
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+
+    .event-card {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .card-hover-text {
+        bottom: 10%;
+        left: 5% !important;
+    }
+
+    .see-more a {
         font-size: 36px;
     }
 
-    .card-hover-text>svg {
-        width: 36px;
-        height: 36px;
+    .see-more svg {
+        width: 48px;
+        height: 48px;
     }
-
 }
 
 @media screen and (max-width: 600px) {
+
+    :root {
+        --button-padding: 8px 4px;
+        --nav-bar-height: 65px;
+    }
+
+    .tag {
+        font-size: 12px !important;
+    }
+
+    .nav-title>h1 {
+        font-size: 36px;
+    }
+
+    .nav-title>svg {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+
+    .scroll-replacer {
+        font-size: 60px;
+    }
+
     .user-registration-MyAccount-navigation-link--dashboard a {
         border-radius: 10px 10px 0 0 !important;
     }
@@ -1197,36 +1321,10 @@ fieldset {
     .profile-button {
         display: none;
     }
-}
 
-@media screen and (max-width: 768px) {
-
-    #loginform {
-        width: 90% !important;
+    .scroll-wrapper span {
+        font-size: 64px;
     }
-
-    .button,
-    .connection-button {
-        font-size: 18px;
-    }
-
-    hr {
-        width: 97%;
-    }
-
-    .section-title {
-        width: 97%;
-    }
-
-    .event-card {
-        width: 97%;
-    }
-
-    .scroll-wrapper {
-        width: 97%;
-    }
-
-
 }
 
 @media screen and (max-width: 550px) {
@@ -1237,6 +1335,7 @@ fieldset {
     .scroll-replacer {
         display: flex;
         align-items: baseline;
+        margin: 30px auto;
     }
 
     .nav-title {
@@ -1255,10 +1354,6 @@ fieldset {
     .button,
     .connection-button {
         font-size: 14px;
-    }
-
-    .event-card .title {
-        font-size: 48px;
     }
 
     .event-card .date {
