@@ -12,6 +12,10 @@
     --nav-bar-height: 80px;
 }
 
+#wp-auth-check-frame {
+    height: 40vh !important;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -58,8 +62,44 @@ hr {
 }
 
 .nav-title {
+    display: flex;
+    align-items: center;
     margin-left: 30px;
+}
+
+.nav-title h1 {
     font-size: 36px;
+    font-weight: 800;
+    transform: translateX(-2rem);
+    transition: all 300ms ease-in-out;
+
+}
+
+.nav-title:hover h1 {
+    transform: translateX(0);
+    transition: all 300ms ease-in-out;
+}
+
+.nav-title .logo-home {
+    opacity: 0;
+    width: 2rem;
+    height: 2rem;
+    fill: black;
+    transition: all 300ms ease-in-out;
+}
+
+.nav-title:hover .logo-home {
+    fill: var(--rose);
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.nav-title:hover {
+    color: var(--rose);
+}
+
+.nav-title svg {
+    margin-right: 10px;
 }
 
 
@@ -107,7 +147,11 @@ hr {
     color: #FFF;
     font-size: 24px;
     padding: 10px 2px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
+}
+
+.small-profile-button {
+    display: none;
 }
 
 .connection-button:hover {
@@ -117,7 +161,7 @@ hr {
 .connection-button span {
     background-color: var(--rose);
     padding: 8px 18px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
 }
 
 .connection-button:hover span {
@@ -133,7 +177,7 @@ hr {
     cursor: default;
     padding: 7px 18px;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     margin-left: 20px;
     margin-right: 10px;
     font-size: 24px;
@@ -141,7 +185,7 @@ hr {
 }
 
 .header {
-    height: calc(100vh-var(--nav-bar-height));
+    height: calc(100vh - var(--nav-bar-height));
     display: flex;
     flex-direction: column;
 }
@@ -624,7 +668,7 @@ section.post .content {
 }
 
 .post img {
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -632,7 +676,7 @@ section.post .content {
 /* login */
 
 
-.user-registration.ur-frontend-form   {
+.user-registration.ur-frontend-form {
     height: fit-content;
     width: 50%;
     max-width: 500px;
@@ -644,7 +688,7 @@ section.post .content {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding: 50px;
     justify-content: center;
@@ -655,7 +699,7 @@ section.post .content {
     height: 50px;
     border-radius: 10px !important;
     border: 2px solid var(--rose);
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     padding: 0 20px;
     font-size: 24px;
     font-weight: 500;
@@ -668,7 +712,7 @@ section.post .content {
     height: 50px;
     border-radius: 10px !important;
     border: 2px solid var(--rose) !important;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     padding: 5px 20px !important;
     font-size: 24px;
     font-weight: 500;
@@ -679,21 +723,35 @@ section.post .content {
     transition: none !important;
 }
 
+fieldset p {
+    margin-bottom: 30px;
+}
+
 .field-user_pass.password,
 .field-user_email,
-.field-user_confirm_password.confirm-password {
+.field-user_confirm_password.confirm-password,
+.ur-field-item.field-last_name,
+.ur-field-item.field-first_name,
+fieldset p,
+.ur-form-grid p {
     position: relative;
+    margin-bottom: 10px;
 }
 
 .field-user_pass.password label,
 .field-user_email label.ur-label,
-.field-user_confirm_password.confirm-password label.ur-label {
+.field-user_confirm_password.confirm-password label.ur-label,
+.ur-field-item.field-last_name label.ur-label,
+.ur-field-item.field-first_name label.ur-label,
+fieldset p label,
+.ur-form-grid p label {
     color: var(--rose);
     position: absolute;
     top: -14px !important;
     left: 20px;
     z-index: 10;
     font-size: 10px !important;
+    font-weight: 700;
     background-color: white;
     padding: 0 5px;
 }
@@ -711,7 +769,7 @@ section.post .content {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px !important;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
 }
 
 
@@ -765,7 +823,8 @@ input:-internal-autofill-selected {
 }
 
 .login #loginform,
-.login #registerform {
+.login #registerform,
+.ur-frontend-form.login {
     height: fit-content;
     width: 50%;
     max-width: 500px;
@@ -778,7 +837,7 @@ input:-internal-autofill-selected {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding: 50px;
     justify-content: center;
@@ -808,7 +867,7 @@ input:-internal-autofill-selected {
     width: 100%;
     margin: auto;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     border: 2px solid var(--rose);
     font-size: 24px;
     font-weight: 500;
@@ -874,7 +933,7 @@ input:-internal-autofill-selected {
 .login .submit input[type="submit"] {
     background: var(--rose);
     width: 100%;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     font-size: 24px;
     color: white;
     border: 2px solid var(--rose);
@@ -906,7 +965,7 @@ input:-internal-autofill-selected {
 }
 
 #login_error {
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25) !important;
 }
 
@@ -926,7 +985,7 @@ input:-internal-autofill-selected {
 
 .login .message {
     width: 80%;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     margin: auto;
     margin-bottom: 10px;
@@ -938,7 +997,7 @@ input:-internal-autofill-selected {
     width: 80%;
     margin-bottom: 10px !important;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     margin: auto;
     margin-bottom: 10px;
@@ -949,13 +1008,17 @@ input:-internal-autofill-selected {
 
 /* Dashboard */
 
+nav.user-registration-MyAccount-navigation li a:hover {
+    background-color: var(--rose-75) !important;
+}
+
 
 
 .logged-in .user-registration {
     width: 90%;
     background-color: white;
     margin: 50px auto !important;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
@@ -965,7 +1028,7 @@ input:-internal-autofill-selected {
     border-radius: 10px 0 0 10px;
 }
 
-#user-registration.vertical .user-registration-MyAccount-navigation ul .user-registration-MyAccount-navigation-link.is-active a  {
+#user-registration.vertical .user-registration-MyAccount-navigation ul .user-registration-MyAccount-navigation-link.is-active a {
     background-color: var(--rose-50) !important;
     border-color: var(--rose) !important;
 }
@@ -978,18 +1041,27 @@ fieldset {
     border: none;
 }
 
-#ur-frontend-form > form > div > div > p > input.user-registration-Button.button {
+#ur-frontend-form>form>div>div>p>input.user-registration-Button.button,
+#ur-frontend-form>form>div>div>div>p>input.user-registration-Button.button,
+#ur-frontend-form>form>div>div>div>input {
+    padding: 7px 10px !important;
     color: var(--rose) !important;
     background-color: transparent;
     transition: none;
 }
 
-#ur-frontend-form > form > div > div > p > input.user-registration-Button.button:hover {
+#ur-frontend-form>form>div>div>p>input.user-registration-Button.button:hover,
+#ur-frontend-form>form>div>div>div>p>input.user-registration-Button.button:hover,
+#ur-frontend-form>form>div>div>div>input:hover {
     color: white !important;
     background-color: var(--rose);
     transition: none;
 }
 
+
+#wp-auth-check {
+    max-height: 80vh;
+}
 
 @keyframes slide-left {
     0% {
@@ -1066,6 +1138,10 @@ fieldset {
 }
 
 @media screen and (max-width: 1000px) {
+    input {
+        font-size: 18px !important;
+    }
+
     .sign-up-button {
         margin-left: 0;
     }
@@ -1097,6 +1173,30 @@ fieldset {
         height: 36px;
     }
 
+}
+
+@media screen and (max-width: 600px) {
+    .user-registration-MyAccount-navigation-link--dashboard a {
+        border-radius: 10px 10px 0 0 !important;
+    }
+
+    .user-registration-MyAccount-navigation {
+        background-color: var(--rose-25) !important;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .button svg,
+    .connection-button svg {
+        display: none;
+    }
+
+    .small-profile-button {
+        display: flex;
+    }
+
+    .profile-button {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1185,4 +1285,28 @@ fieldset {
 
 .h-5 {
     height: 1.25rem;
+}
+
+.w-6 {
+    width: 1.5rem;
+}
+
+.h-6 {
+    height: 1.5rem;
+}
+
+.w-7 {
+    width: 1.75rem;
+}
+
+.h-7 {
+    height: 1.75rem;
+}
+
+.w-8 {
+    width: 2rem;
+}
+
+.h-8 {
+    height: 2rem;
 }
