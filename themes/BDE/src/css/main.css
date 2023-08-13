@@ -219,6 +219,7 @@ hr {
 
 
 .scroll-wrapper {
+    height: fit-content;
     position: relative;
     margin: 10px auto;
     width: 80%;
@@ -678,52 +679,61 @@ section.post .content {
 
 /* login */
 
-
-.user-registration.ur-frontend-form {
-    height: fit-content;
-    width: 50%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: var(--border-radius-md);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    padding: 50px;
-    justify-content: center;
+.dashicons,
+.dashicons:focus,
+.dashicons:checked,
+.button.button-secondary.wp-hide-pw.hide-if-no-js {
+    box-shadow: none !important;
+    border: none !important;
+    color: var(--rose);
 }
 
-.input-text {
+input {
+    font-size: 24px !important;
+    line-height: 0 !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
     width: 100%;
     height: 50px;
     border-radius: 10px !important;
     border: 2px solid var(--rose);
     border-radius: var(--border-radius-md);
     padding: 0 20px;
-    font-size: 24px;
     font-weight: 500;
     margin-bottom: 20px;
 }
 
-.ur-submit-button {
-    width: 100%;
-    margin: 10px 0 !important;
+input[type="submit"],
+button[type="submit"] {
+    width: fit-content !important;
+    margin: auto !important;
     height: 50px;
     border-radius: 10px !important;
     border: 2px solid var(--rose) !important;
+    color: white !important;
+    background-color: var(--rose) !important;
     border-radius: var(--border-radius-md);
-    padding: 5px 20px !important;
+    padding: 0 20px;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 20px;
-    background-color: var(--rose);
-    color: white;
-    cursor: pointer;
     transition: none !important;
+
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: white !important;
+    color: var(--rose) !important;
+    transition: none !important;
+}
+
+label {
+    font-weight: 700;
+    color: var(--rose);
 }
 
 fieldset p {
@@ -736,7 +746,8 @@ fieldset p {
 .ur-field-item.field-last_name,
 .ur-field-item.field-first_name,
 fieldset p,
-.ur-form-grid p {
+.ur-form-grid p,
+#lostpasswordform p {
     position: relative;
     margin-bottom: 10px;
 }
@@ -748,9 +759,19 @@ fieldset p,
 .ur-field-item.field-first_name label.ur-label,
 fieldset p label,
 .ur-form-grid p label {
-    color: var(--rose);
     position: absolute;
     top: -14px !important;
+    left: 20px;
+    z-index: 10;
+    font-size: 10px !important;
+    background-color: white;
+    padding: 0 5px;
+}
+
+#lostpasswordform p label {
+    color: var(--rose);
+    position: absolute;
+    top: -6px !important;
     left: 20px;
     z-index: 10;
     font-size: 10px !important;
@@ -758,12 +779,6 @@ fieldset p label,
     background-color: white;
     padding: 0 5px;
 }
-
-.ur-submit-button:hover {
-    color: var(--rose);
-    background-color: white;
-}
-
 
 .user-registration-error {
     background-color: var(--rose-25) !important;
@@ -797,24 +812,6 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 input:-internal-autofill-selected {
     background-color: transparent !important;
     font-size: 24px !important;
@@ -825,11 +822,16 @@ input:-internal-autofill-selected {
     background-color: white;
 }
 
+.password_preview.dashicons {
+    color: var(--rose) !important;
+}
+
 .login #loginform,
 .login #registerform,
-.ur-frontend-form.login {
-    height: fit-content;
-    width: 50%;
+.ur-frontend-form.login,
+.user-registration.ur-frontend-form {
+    border: none;
+    height: fit-content !important;
     max-width: 500px;
     height: 400px;
     display: flex;
@@ -844,6 +846,12 @@ input:-internal-autofill-selected {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     padding: 50px;
     justify-content: center;
+}
+
+.login #loginform,
+.login #registerform,
+.ur-frontend-form.login {
+    width: 50%;
 }
 
 .login #loginform p,
@@ -865,8 +873,7 @@ input:-internal-autofill-selected {
 
 .login input[type="text"],
 .login input[type="password"],
-.login input[type="email"],
-.login input[type="submit"] {
+.login input[type="email"] {
     width: 100%;
     margin: auto;
     padding: 10px;
@@ -933,7 +940,7 @@ input:-internal-autofill-selected {
     position: relative;
 }
 
-.login .submit input[type="submit"] {
+/* .login .submit input[type="submit"] {
     background: var(--rose);
     width: 100%;
     border-radius: var(--border-radius-md);
@@ -941,12 +948,12 @@ input:-internal-autofill-selected {
     color: white;
     border: 2px solid var(--rose);
     cursor: pointer;
-}
+} */
 
-.login .submit input[type="submit"]:hover {
+/* .login .submit input[type="submit"]:hover {
     background-color: white;
     color: var(--rose);
-}
+} */
 
 .wp-core-ui .button,
 .wp-core-ui .button-secondary {
@@ -1298,6 +1305,7 @@ fieldset {
 
     .scroll-replacer {
         font-size: 60px;
+        transform: skew(-14deg);
     }
 
     .user-registration-MyAccount-navigation-link--dashboard a {
@@ -1362,6 +1370,22 @@ fieldset {
 
     .event-card .description {
         font-size: 18px;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .header {
+        padding: 0;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .header > .event-card {
+        margin: 0 auto;
+    }
+
+    .scroll-wrapper span {
+        font-size: 100px;
     }
 }
 
