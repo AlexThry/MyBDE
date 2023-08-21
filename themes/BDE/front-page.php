@@ -191,7 +191,7 @@
         <?php if (wp_count_posts('event')->publish > 4) : ?>
 
             <div class="see-more">
-                <a href="<?php echo site_url('/evenements') ?>">
+                <a href="<?php echo site_url('/futurs-evenements') ?>">
                     En voir plus
                 </a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 96 96" fill="none">
