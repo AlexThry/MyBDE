@@ -67,24 +67,24 @@ hr {
 }
 .navbar .nav-title svg {
   margin-right: 10px;
+  transition: opacity 300ms ease-in-out;
+  fill: var(--rose);
 }
 .navbar .nav-title h1 {
   font-size: 36px;
   font-weight: 800;
   transform: translateX(-2rem);
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 }
 .navbar .nav-title:hover {
   color: var(--rose);
 }
 .navbar .nav-title:hover h1 {
   transform: translateX(0);
-  transition: all 300ms ease-in-out;
 }
 .navbar .nav-title:hover .logo-home {
   fill: var(--rose);
   opacity: 1;
-  transition: all 300ms ease-in-out;
 }
 .navbar .nav-title .logo-home {
   opacity: 0;
@@ -226,7 +226,7 @@ hr {
 }
 
 .scroll-content {
-  text-shadow: 0 0 10px var(--rose-50);
+  text-shadow: 0 0 10px var(--rose-25);
 }
 
 .scroll-message-left {
@@ -634,14 +634,175 @@ section.post .content {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-/* login */
+/* login / register */
+body.user-registration-page {
+  background-color: white !important;
+}
+body.user-registration-page #user-registration {
+  box-shadow: none !important;
+}
+body.user-registration-page #user-registration a {
+  color: var(--rose) !important;
+}
+body.user-registration-page #user-registration a:not(.dashicons):hover {
+  text-decoration: underline !important;
+}
+body.user-registration-page #user-registration form.user-registration-form {
+  width: 100% !important;
+  max-width: 500px;
+  margin: auto !important;
+}
+body.user-registration-page #user-registration form.user-registration-form p:first-child, body.user-registration-page #user-registration form.user-registration-form p:nth-child(2) {
+  position: relative !important;
+}
+body.user-registration-page #user-registration form.user-registration-form p:first-child label, body.user-registration-page #user-registration form.user-registration-form p:nth-child(2) label {
+  z-index: 2 !important;
+  position: absolute !important;
+  top: -14px !important;
+  left: 10px !important;
+  background-color: white !important;
+  padding: 1px 5px !important;
+}
+body.user-registration-page #user-registration .ur-frontend-form.login {
+  border: none !important;
+}
+body.user-registration-page #user-registration .ur-frontend-form.login input[type=submit] {
+  margin-top: 20px !important;
+}
+
+body.login {
+  background-color: white !important;
+}
+body.login #login {
+  width: 100%;
+  padding: 50px 0 0 !important;
+}
+body.login #login .message {
+  border: solid 2px var(--rose) !important;
+  border-radius: var(--border-radius-md) !important;
+  width: 100% !important;
+  max-width: 500px;
+  margin: auto !important;
+}
+body.login #login h1:first-child {
+  display: none;
+  background-image: url("src/img/logo.png") !important;
+}
+body.login #login form {
+  display: block;
+  width: 100% !important;
+  max-width: 500px;
+  border: none !important;
+  margin: auto !important;
+  box-shadow: none !important;
+}
+body.login #login #nav,
+body.login #login #backtoblog {
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+}
+body.login #login p:first-child,
+body.login #login .user-pass-wrap {
+  position: relative;
+}
+body.login #login p:first-child label,
+body.login #login .user-pass-wrap label {
+  z-index: 2;
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  background-color: white;
+  padding: 1px 5px;
+}
+
+.user-registration.ur-frontend-form {
+  border: none !important;
+}
+
+.ur-message,
+.user-registration-error {
+  margin-bottom: 10px !important;
+  border: none;
+  border-radius: var(--border-radius-md);
+}
+
+.user-registration-password-strength {
+  border-radius: var(--border-radius-sm);
+}
+
+fieldset {
+  border: none !important;
+}
+
+input,
+select,
+button[type=submit],
+input[type=submit] {
+  font-size: 18px !important;
+  border-radius: var(--border-radius-md) !important;
+  border: solid 2px var(--rose) !important;
+  background-color: transparent !important;
+  padding: 5px 10px !important;
+  color: var(--rose) !important;
+  transition: none !important;
+  box-shadow: none !important;
+}
+input:not(input[type=checkbox]),
+select:not(input[type=checkbox]),
+button[type=submit]:not(input[type=checkbox]),
+input[type=submit]:not(input[type=checkbox]) {
+  margin-bottom: 10px !important;
+}
+input:not([type=checkbox]),
+select:not([type=checkbox]),
+button[type=submit]:not([type=checkbox]),
+input[type=submit]:not([type=checkbox]) {
+  height: 40px !important;
+}
+
+button[type=submit]:hover,
+input[type=submit]:hover {
+  background-color: var(--rose) !important;
+  color: white !important;
+  transition: none !important;
+}
+
+input[type=checkbox]:checked {
+  color: white !important;
+  transition: none !important;
+  overflow: hidden !important;
+}
+input[type=checkbox]:checked::before {
+  content: "" !important;
+  background-color: var(--rose) !important;
+}
+
+label:not(.user-registration-error) {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: var(--rose) !important;
+}
+
+.form-element div {
+  position: relative !important;
+}
+.form-element label:not(.user-registration-error) {
+  z-index: 2 !important;
+  position: absolute !important;
+  top: -14px !important;
+  left: 10px !important;
+  background-color: white !important;
+  padding: 1px 5px !important;
+}
+
 .dashicons,
 .dashicons:focus,
 .dashicons:checked,
 .button.button-secondary.wp-hide-pw.hide-if-no-js {
   box-shadow: none !important;
   border: none !important;
-  color: var(--rose);
+  color: var(--rose) !important;
 }
 
 input {
@@ -737,6 +898,13 @@ input {
   }
   .team-card {
     height: 40vh;
+  }
+  .event-card-info .title,
+  .event-card-info .description {
+    margin-bottom: 0;
+  }
+  .event-card-info .date {
+    margin-bottom: 5px;
   }
 }
 @media screen and (max-width: 768px) {

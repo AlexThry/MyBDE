@@ -66,28 +66,27 @@ hr {
 		margin-left: 30px;
 		svg {
 			margin-right: 10px;
+			transition: opacity 300ms ease-in-out;
+			fill: var(--rose);
 		}
 
 		h1 {
 			font-size: 36px;
 			font-weight: 800;
 			transform: translateX(-2rem);
-			transition: all 300ms ease-in-out;
+			transition: transform 300ms ease-in-out;
 		}
 
 		&:hover {
-
 			color: var(--rose);
 
 			h1 {
 				transform: translateX(0);
-				transition: all 300ms ease-in-out;
 			}
 
 			.logo-home {
 				fill: var(--rose);
 				opacity: 1;
-				transition: all 300ms ease-in-out;
 			}
 		}
 
@@ -99,13 +98,12 @@ hr {
 			transition: all 300ms ease-in-out;
 		}
 	}
-    
-    .nav-buttons {
-        margin-right: 30px;
-        display: flex;
-    }
-}
 
+	.nav-buttons {
+		margin-right: 30px;
+		display: flex;
+	}
+}
 
 .button {
 	display: flex;
@@ -119,16 +117,14 @@ hr {
 }
 
 .button {
-
 	svg {
-        margin-left: 5px;
-    }
+		margin-left: 5px;
+	}
 
-    &:hover {
-        color: var(--rose);
-        border-color: var(--rose);
-    }
-
+	&:hover {
+		color: var(--rose);
+		border-color: var(--rose);
+	}
 }
 
 .light-button {
@@ -136,14 +132,12 @@ hr {
 	font-weight: 600;
 	font-size: 24px;
 	border-bottom: 2px solid #000;
-    
-    &:hover {
-        border-bottom: 2px solid var(--rose);
-        color: var(--rose);
-    }
+
+	&:hover {
+		border-bottom: 2px solid var(--rose);
+		color: var(--rose);
+	}
 }
-
-
 
 .connection-button {
 	background: linear-gradient(var(--rose), var(--rose));
@@ -153,24 +147,24 @@ hr {
 	padding: 10px 2px;
 	border-radius: var(--border-radius-md);
 
-    svg {
-        margin-left: 5px;
-    }
-    
-    span {
-        background-color: var(--rose);
-        padding: var(--button-padding);
-        border-radius: var(--border-radius-md);
-    }
+	svg {
+		margin-left: 5px;
+	}
 
-    &:hover {
-        background: linear-gradient(114deg, #00d1ff, #00ffb2, #8fff00, #eaff00);
+	span {
+		background-color: var(--rose);
+		padding: var(--button-padding);
+		border-radius: var(--border-radius-md);
+	}
 
-        span {
-            border: 0;
-            border-radius: 8px;
-        }
-    }
+	&:hover {
+		background: linear-gradient(114deg, #00d1ff, #00ffb2, #8fff00, #eaff00);
+
+		span {
+			border: 0;
+			border-radius: 8px;
+		}
+	}
 }
 
 .small-profile-button {
@@ -209,21 +203,19 @@ hr {
 	color: var(--rose);
 	width: 90%;
 	margin: 40px auto;
-    
-    span {
-        width: fit-content;
-        height: fit-content;
-    }
 
-    svg {
-        margin: 0 10px;
-        width: 50px;
-        height: 50px;
-        fill: var(--rose);
-    }
+	span {
+		width: fit-content;
+		height: fit-content;
+	}
+
+	svg {
+		margin: 0 10px;
+		width: 50px;
+		height: 50px;
+		fill: var(--rose);
+	}
 }
-
-
 
 .scroll-wrapper {
 	height: fit-content;
@@ -233,30 +225,37 @@ hr {
 	overflow: hidden;
 	display: flex;
 
-    &::before,
-    &::after {
-        z-index: 1;
-        position: absolute;
-        content: "";
-        top: 0;
-        height: 100%;
-        width: 20%;
-    }
-    
-    &::before {
-        left: 0;
-        background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-    }
-    
-    &::after {
-        right: 0;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    }
+	&::before,
+	&::after {
+		z-index: 1;
+		position: absolute;
+		content: "";
+		top: 0;
+		height: 100%;
+		width: 20%;
+	}
+
+	&::before {
+		left: 0;
+		background: linear-gradient(
+			90deg,
+			#fff 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+
+	&::after {
+		right: 0;
+		background: linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0) 0%,
+			#fff 100%
+		);
+	}
 }
 
-
 .scroll-content {
-	text-shadow: 0 0 10px var(--rose-50);
+	text-shadow: 0 0 10px var(--rose-25);
 }
 
 .scroll-message-left {
@@ -668,7 +667,183 @@ section.post .content {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-/* login */
+/* login / register */
+
+body.user-registration-page {
+	background-color: white !important;
+
+	#user-registration {
+		box-shadow: none !important;
+
+		a {
+			color: var(--rose) !important;
+
+			&:not(.dashicons):hover {
+				text-decoration: underline !important;
+			}
+		}
+
+		form.user-registration-form {
+			width: 100% !important;
+			max-width: 500px;
+			margin: auto !important;
+
+			& p:first-child,
+			& p:nth-child(2) {
+				position: relative !important;
+
+				label {
+					z-index: 2 !important;
+					position: absolute !important;
+					top: -14px !important;
+					left: 10px !important;
+					background-color: white !important;
+					padding: 1px 5px !important;
+				}
+			}
+		}
+
+		.ur-frontend-form.login {
+			border: none !important;
+
+			input[type="submit"] {
+				margin-top: 20px !important;
+			}
+		} 
+
+	}
+}
+
+body.login {
+	background-color: white !important;
+
+	#login {
+		width: 100%;
+		padding: 50px 0 0 !important;
+
+		.message {
+			border: solid 2px var(--rose) !important;
+			border-radius: var(--border-radius-md) !important;
+			width: 100% !important;
+			max-width: 500px;
+			margin: auto !important;
+		}
+
+		h1:first-child {
+			display: none;
+			background-image: url("src/img/logo.png") !important;
+		}
+
+		form {
+			display: block;
+			width: 100% !important;
+			max-width: 500px;
+			border: none !important;
+			margin: auto !important;
+			box-shadow: none !important;
+		}
+
+		#nav,
+		#backtoblog {
+			display: block;
+			width: fit-content;
+			margin: 20px auto;
+		}
+
+		p:first-child,
+		.user-pass-wrap {
+			position: relative;
+
+			label {
+				z-index: 2;
+				position: absolute;
+				top: -8px;
+				left: 10px;
+				background-color: white;
+				padding: 1px 5px;
+			}
+		}
+	}
+}
+
+.user-registration.ur-frontend-form {
+	border: none !important;
+}
+
+.ur-message,
+.user-registration-error {
+	margin-bottom: 10px !important;
+	border: none;
+	border-radius: var(--border-radius-md);
+}
+
+.user-registration-password-strength {
+	border-radius: var(--border-radius-sm);
+}
+
+fieldset {
+	border: none !important;
+}
+
+input,
+select,
+button[type="submit"],
+input[type="submit"] {
+	&:not(input[type="checkbox"]) {
+		margin-bottom: 10px !important;
+	}
+	font-size: 18px !important;
+	border-radius: var(--border-radius-md) !important;
+	border: solid 2px var(--rose) !important;
+	background-color: transparent !important;
+	padding: 5px 10px !important;
+	color: var(--rose) !important;
+	transition: none !important;
+	box-shadow: none !important;
+	&:not([type="checkbox"]) {
+		height: 40px !important;
+	}
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+	background-color: var(--rose) !important;
+	color: white !important;
+	transition: none !important;
+}
+
+input[type="checkbox"]:checked {
+	// background-color: var(--rose) !important;
+	color: white !important;
+	transition: none !important;
+	overflow: hidden !important;
+
+	&::before {
+		content: "" !important;
+		background-color: var(--rose) !important;
+	}
+}
+
+label:not(.user-registration-error) {
+	font-size: 10px !important;
+	font-weight: 600 !important;
+	color: var(--rose) !important;
+}
+
+.form-element {
+	div {
+		position: relative !important;
+	}
+
+	label:not(.user-registration-error) {
+		z-index: 2 !important;
+		position: absolute !important;
+		top: -14px !important;
+		left: 10px !important;
+		background-color: white !important;
+		padding: 1px 5px !important;
+	}
+}
 
 .dashicons,
 .dashicons:focus,
@@ -676,7 +851,7 @@ section.post .content {
 .button.button-secondary.wp-hide-pw.hide-if-no-js {
 	box-shadow: none !important;
 	border: none !important;
-	color: var(--rose);
+	color: var(--rose) !important;
 }
 
 input {
@@ -693,6 +868,7 @@ input {
 #wp-auth-check {
 	max-height: 80vh;
 }
+
 
 @keyframes slide-left {
 	0% {
@@ -793,6 +969,17 @@ input {
 
 	.team-card {
 		height: 40vh;
+	}
+
+	.event-card-info {
+		.title,
+		.description {
+			margin-bottom: 0;
+		}
+
+		.date {
+			margin-bottom: 5px;
+		}
 	}
 }
 
