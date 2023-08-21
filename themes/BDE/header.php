@@ -21,7 +21,6 @@
                 </h1>
             </div>
         </a>
-        <?php if (!is_page("registration")) : ?>
             <div class="nav-buttons">
                 <?php if (is_front_page()) : ?>
                     <a href="#body" class="light-button">Home</a>
@@ -51,5 +50,4 @@
                 <?php endif ?>
 
             </div>
-        <?php endif ?>
     </nav>
