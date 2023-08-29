@@ -287,91 +287,94 @@ function get_user_event()
 function bde_event_inscription_form()
 {
 
+    if (get_field('event_inscription_enabled')) {
 
-    if (get_post_type() === 'event') {
-        $event_location = get_field('event_location');
-        $event_date = get_field('event_date');
-        $event_time = get_field('event_time');
-    }
-    $attendees = get_post_meta(get_the_ID(), 'bde_event_attendees', true);
-    if (!empty($attendees)) {
-        $attendees_array = explode(',', $attendees);
-    } else {
-        $attendees_array = array();
-    }
-    foreach ($attendees_array as $attendee_id) {
-        $attendee = get_userdata($attendee_id);
-        if (!$attendee) {
-            $key = array_search($attendee_id, $attendees_array);
-            unset($attendees_array[$key]);
+
+        if (get_post_type() === 'event') {
+            $event_location = get_field('event_location');
+            $event_date = get_field('event_date');
+            $event_time = get_field('event_time');
         }
-    }
-    $attendees = implode(',', $attendees_array);
-    update_post_meta(get_the_ID(), 'bde_event_attendees', $attendees);
-
-    if (get_field('event_inscription_enabled')) :
-        $place_limit = get_field('place_limit');
-        $event_price = get_field('event_price');
-
-        if (isset($_POST['submit'])) {
-            $event_id = get_the_ID();
-            $user_id = get_current_user_id();
-            if (isset($_POST['inscription'])) {
-                $inscription = true;
-            } else {
-                $inscription = false;
-            }
-            if ($inscription) {
-                bde_add_user_to_event($user_id, $event_id);
-            } else {
-                bde_remove_user_from_event($user_id, $event_id);
+        $attendees = get_post_meta(get_the_ID(), 'bde_event_attendees', true);
+        if (!empty($attendees)) {
+            $attendees_array = explode(',', $attendees);
+        } else {
+            $attendees_array = array();
+        }
+        foreach ($attendees_array as $attendee_id) {
+            $attendee = get_userdata($attendee_id);
+            if (!$attendee) {
+                $key = array_search($attendee_id, $attendees_array);
+                unset($attendees_array[$key]);
             }
         }
-?>
-        <hr>
-        <div class="event-inscription">
-            <h1>Réservation</h1>
-            <p>Lieu : <?php echo $event_location ?></p>
-            <p>Date : <?php echo $event_date ?></p>
-            <?php if ($event_time) : ?>
-                <p>Heure : <?php echo $event_time ?></p>
-            <?php endif ?>
-            <?php
-            if (get_field('place_limit')) {
-                $place_limit = get_field('place_limit');
-            }
-            $places_left = bde_get_places_left(get_the_ID(), $place_limit);
-            ?>
-            <?php if ($place_limit) : ?>
-                <p>Nombre de places restantes : <?php echo $places_left ?></p>
-            <?php endif ?>
-            <p>Prix : <?php echo $event_price ?> (à payer au BDE)</p>
+        $attendees = implode(',', $attendees_array);
+        update_post_meta(get_the_ID(), 'bde_event_attendees', $attendees);
 
-            <?php if ($places_left > 0) : ?>
-                <form action="<?php the_permalink() ?>" method="post" id="event-inscription-form">
-                    <?php
-                    $user_is_attendee = bde_user_is_registered_to_event(get_current_user_id(), get_the_ID());
-                    ?>
-                    <label for="inscription">Je réserve : </label>
-                    <input type="checkbox" class="checkbox" name="inscription" <?php echo $user_is_attendee ? 'checked' : '' ?>>
-                    <input type="submit" name="submit" value="confirmer">
-                </form>
-            <?php else : ?>
-                <p class="user-message error">Il n'y a plus de places disponibles pour cet évènement</p>
-            <?php endif ?>
+        if (get_field('event_inscription_enabled')) :
+            $place_limit = get_field('place_limit');
+            $event_price = get_field('event_price');
 
-            <?php
             if (isset($_POST['submit'])) {
-                if ($user_is_attendee) {
-                    echo "<p class='user-message success'>Vous êtes bien inscrit à l'évènement</p>";
+                $event_id = get_the_ID();
+                $user_id = get_current_user_id();
+                if (isset($_POST['inscription'])) {
+                    $inscription = true;
                 } else {
-                    echo "<p class='user-message success'>Vous êtes bien désinscrit de l'évènement</p>";
+                    $inscription = false;
+                }
+                if ($inscription) {
+                    bde_add_user_to_event($user_id, $event_id);
+                } else {
+                    bde_remove_user_from_event($user_id, $event_id);
                 }
             }
-            ?>
-        </div>
+?>
+            <hr>
+            <div class="event-inscription">
+                <h1>Réservation</h1>
+                <p>Lieu : <?php echo $event_location ?></p>
+                <p>Date : <?php echo $event_date ?></p>
+                <?php if ($event_time) : ?>
+                    <p>Heure : <?php echo $event_time ?></p>
+                <?php endif ?>
+                <?php
+                if (get_field('place_limit')) {
+                    $place_limit = get_field('place_limit');
+                }
+                $places_left = bde_get_places_left(get_the_ID(), $place_limit);
+                ?>
+                <?php if ($place_limit) : ?>
+                    <p>Nombre de places restantes : <?php echo $places_left ?></p>
+                <?php endif ?>
+                <p>Prix : <?php echo $event_price ?> (à payer au BDE)</p>
+
+                <?php if ($places_left > 0) : ?>
+                    <form action="<?php the_permalink() ?>" method="post" id="event-inscription-form">
+                        <?php
+                        $user_is_attendee = bde_user_is_registered_to_event(get_current_user_id(), get_the_ID());
+                        ?>
+                        <label for="inscription">Je réserve : </label>
+                        <input type="checkbox" class="checkbox" name="inscription" <?php echo $user_is_attendee ? 'checked' : '' ?>>
+                        <input type="submit" name="submit" value="confirmer">
+                    </form>
+                <?php else : ?>
+                    <p class="user-message error">Il n'y a plus de places disponibles pour cet évènement</p>
+                <?php endif ?>
+
+                <?php
+                if (isset($_POST['submit'])) {
+                    if ($user_is_attendee) {
+                        echo "<p class='user-message success'>Vous êtes bien inscrit à l'évènement</p>";
+                    } else {
+                        echo "<p class='user-message success'>Vous êtes bien désinscrit de l'évènement</p>";
+                    }
+                }
+                ?>
+            </div>
 
         <?php endif;
+    }
 }
 
 function bde_inscrits_page_callback()

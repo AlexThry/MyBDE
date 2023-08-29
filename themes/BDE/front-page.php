@@ -1,6 +1,5 @@
 <?php get_header() ?>
 
-
 <header id="header" class="header">
 
     <div class="scroll-replacer">

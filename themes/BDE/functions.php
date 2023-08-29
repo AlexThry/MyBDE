@@ -19,12 +19,26 @@ function bde_enqueue_styles()
 
 add_action('wp_enqueue_scripts', 'bde_enqueue_styles');
 
+function bde_enqueue_admin_styles()
+{
+    wp_enqueue_style('bde-admin-style', get_theme_file_uri('/src/css/admin.css'), null, microtime());
+}
+
+add_action('admin_enqueue_scripts', 'bde_enqueue_admin_styles');
+
 function bde_enqueue_scripts()
 {
     wp_enqueue_script('bde-main-script', get_theme_file_uri('/src/js/main.js'), null, microtime(), true);
 }
 
 add_action('wp_enqueue_scripts', 'bde_enqueue_scripts');
+
+function bde_admin_enqueue_scripts()
+{
+    wp_enqueue_script('bde-admin-script', get_theme_file_uri('/src/js/admin.js'), null, microtime(), true);
+}
+
+add_action('admin_enqueue_scripts', 'bde_admin_enqueue_scripts');
 
 function bde_custom_post_types()
 {
@@ -86,11 +100,8 @@ add_action('admin_init', 'redirectSubsToFrontend');
 function redirectSubsToFrontend()
 {
     $user = wp_get_current_user();
-    if (count($user->roles) == 1 && $user->roles[0] == 'subscriber') {
-        wp_redirect(site_url('/'));
-        exit;
-    } else if (count($user->roles) == 1 && $user->roles[0] == 'adherant') {
-        wp_redirect(site_url('/'));
+    if ((current_user_can('subscriber') || current_user_can('adherant')) && (!current_user_can('administrator') || !current_user_can('author'))) {
+        wp_redirect(site_url('/my-account'));
         exit;
     }
 }
@@ -100,14 +111,13 @@ add_action('wp_loaded', 'noSubsAdminBar');
 function noSubsAdminBar()
 {
     $user = wp_get_current_user();
-    if (in_array('administrator', $user->roles)) {
+    if ((current_user_can('administrator') || current_user_can('author'))) {
         show_admin_bar(true);
     } else {
         show_admin_bar(false);
     }
 }
 
-//customize login screen
 
 add_filter('login_headerurl', 'bdeHeaderUrl');
 
@@ -125,9 +135,48 @@ function bdeLoginCSS()
 
 $register_link = site_url('/registration');
 
-add_filter('register', 'register_redirect_link');
 
-function register_redirect_link()
+function bde_save_event_attendees($post_id)
 {
-    return '<a href="' . site_url('/registration') . '">Inscription</a>';
+    if (array_key_exists('bde_event_attendees', $_POST)) {
+        update_post_meta(
+            $post_id,
+            'bde_event_attendees',
+            sanitize_text_field($_POST['bde_event_attendees'])
+        );
+    }
 }
+
+add_action('save_post_event', 'bde_save_event_attendees');
+
+function bde_menu_pages()
+{
+    if (current_user_can('administrator') || current_user_can('author')) {
+        add_menu_page(
+            'Inscriptions',
+            'Inscriptions',
+            'list_users',
+            'inscription',
+            'bde_inscrits_page_callback',
+            'dashicons-tickets-alt',
+            12
+        );
+
+        add_menu_page(
+            'Modifier Utilisateurs',
+            'Modifier Utilisateurs',
+            'list_users',
+            'modify_users',
+            'bde_modify_users_callback',
+            'dashicons-admin-generic',
+            10
+        );
+    }
+
+
+    remove_menu_page('edit-comments.php');
+    remove_menu_page('edit.php');
+    remove_menu_page('tools.php');
+}
+
+add_action('admin_menu', 'bde_menu_pages');
