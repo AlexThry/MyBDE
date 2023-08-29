@@ -4,6 +4,7 @@
   --rose-25: #d0006f40;
   --rose-50: #d0006f86;
   --rose-75: #d0006fce;
+  --red-error: #fa3d3d67;
   --border-radius-sm: 5px;
   --border-radius-md: 10px;
   --border-radius-lg: 20px;
@@ -39,12 +40,36 @@ hr {
   margin: 30px auto;
 }
 
+input[type=radio] {
+  appearance: none;
+  border: var(--rose) 2px solid !important;
+  border-radius: 50% !important;
+  height: 20px !important;
+  width: 20px !important;
+}
+input[type=radio]:checked {
+  background-color: var(--rose) !important;
+}
+
 .not-found-error {
   width: fit-content;
   margin: auto;
   font-size: 48px;
   font-weight: 900;
   color: var(--rose);
+}
+
+.user-message {
+  width: 100%;
+  margin: 10px auto 0;
+  border-radius: var(--border-radius-md);
+  padding: 10px 20px;
+}
+.user-message.success {
+  background-color: var(--rose-25);
+}
+.user-message.error {
+  background-color: var(--red-error);
 }
 
 .navbar {
@@ -172,7 +197,7 @@ hr {
 }
 
 .header {
-  height: calc(100vh - var(--nav-bar-height));
+  height: calc(100vh - var(--nav-bar-height) - 40px);
   display: flex;
   padding: 40px 0;
   justify-content: space-between;
@@ -254,7 +279,7 @@ hr {
 .scroll-wrapper span svg {
   transform: skewX(-14deg);
   /* background: linear-gradient(114deg, #00D1FF, #00FFB2, #8FFF00, #eaff00); */
-  border-radius: 15%;
+  /* border-radius: 15%; */
   fill: var(--rose);
 }
 
@@ -407,7 +432,7 @@ hr {
   top: 0;
   left: 0;
   opacity: 0;
-  background: var(--rose-75);
+  background: var(--rose-25);
   backdrop-filter: blur(6px);
   width: 100%;
   height: 100%;
@@ -440,7 +465,7 @@ hr {
 }
 
 .team-card:hover {
-  box-shadow: 0 0 10px var(--rose-50);
+  box-shadow: 0 0 10px var(--rose-25);
   transition: all 75ms ease-in-out;
 }
 
@@ -535,6 +560,25 @@ hr {
 section.post {
   width: 100%;
   margin: 50px auto;
+}
+section.post .event-inscription {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+section.post .event-inscription p {
+  margin-bottom: 12px;
+}
+section.post .event-inscription #event-inscription-form {
+  display: flex;
+  align-items: center;
+}
+section.post .event-inscription #event-inscription-form input[type=submit] {
+  margin-bottom: 0 !important;
+}
+section.post .event-inscription #event-inscription-form label {
+  font-size: 18px !important;
+  margin-right: 10px !important;
 }
 
 section.post .title {
@@ -635,6 +679,12 @@ section.post .content {
 }
 
 /* login / register */
+form.register {
+  width: 100% !important;
+  max-width: 500px;
+  margin: auto !important;
+}
+
 body.user-registration-page {
   background-color: white !important;
 }
@@ -716,12 +766,29 @@ body.login #login .user-pass-wrap label {
   padding: 1px 5px;
 }
 
+#node_recaptcha_register_user-registration-form-49 {
+  display: flex !important;
+  justify-content: center !important;
+}
+#node_recaptcha_register_user-registration-form-49 iframe {
+  margin: 20px auto !important;
+  border: var(--rose) 2px solid !important;
+  border-radius: var(--border-radius-md);
+}
+
 .user-registration.ur-frontend-form {
   border: none !important;
 }
 
 .ur-message,
-.user-registration-error {
+.user-registration-error,
+.user-registration-message {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  height: fit-content !important;
+  padding: 3px 10px !important;
+  margin: auto !important;
   margin-bottom: 10px !important;
   border: none;
   border-radius: var(--border-radius-md);
@@ -735,7 +802,13 @@ fieldset {
   border: none !important;
 }
 
-input,
+form.user-registration-ResetPassword {
+  width: 100% !important;
+  max-width: 500px;
+  margin: auto !important;
+}
+
+input:not(.adminbar-input, input[type=checkbox], input[type=radio]),
 select,
 button[type=submit],
 input[type=submit] {
@@ -748,13 +821,13 @@ input[type=submit] {
   transition: none !important;
   box-shadow: none !important;
 }
-input:not(input[type=checkbox]),
+input:not(.adminbar-input, input[type=checkbox], input[type=radio]):not(input[type=checkbox]),
 select:not(input[type=checkbox]),
 button[type=submit]:not(input[type=checkbox]),
 input[type=submit]:not(input[type=checkbox]) {
   margin-bottom: 10px !important;
 }
-input:not([type=checkbox]),
+input:not(.adminbar-input, input[type=checkbox], input[type=radio]):not([type=checkbox]),
 select:not([type=checkbox]),
 button[type=submit]:not([type=checkbox]),
 input[type=submit]:not([type=checkbox]) {
@@ -768,14 +841,22 @@ input[type=submit]:hover {
   transition: none !important;
 }
 
-input[type=checkbox]:checked {
-  color: white !important;
-  transition: none !important;
-  overflow: hidden !important;
+input[type=checkbox],
+.checkbox {
+  appearance: none;
+  height: 20px !important;
+  width: 20px !important;
+  padding: 0 !important;
+  margin-right: 10px;
+  border-radius: 2px !important;
+  border: var(--rose) 2px solid !important;
+  stroke: var(--rose) !important;
 }
-input[type=checkbox]:checked::before {
-  content: "" !important;
+input[type=checkbox]:checked,
+.checkbox:checked {
   background-color: var(--rose) !important;
+  border: none !important;
+  stroke: white !important;
 }
 
 label:not(.user-registration-error) {
@@ -794,6 +875,21 @@ label:not(.user-registration-error) {
   left: 10px !important;
   background-color: white !important;
   padding: 1px 5px !important;
+}
+
+.form-element-radio {
+  margin-bottom: 10px !important;
+}
+.form-element-radio ul {
+  display: flex !important;
+}
+.form-element-radio ul li {
+  display: flex;
+  align-items: center !important;
+  margin-right: 10px;
+}
+.form-element-radio ul li label {
+  margin: 0 0 0 5px !important;
 }
 
 .dashicons,
@@ -817,6 +913,43 @@ input {
 
 #wp-auth-check {
   max-height: 80vh;
+}
+
+/* Dashboard */
+.dashboard-event-form {
+  width: 80%;
+  margin: auto;
+}
+.dashboard-event-form .event-dashboard {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: solid 2px var(--rose);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 20px;
+}
+.dashboard-event-form .event-dashboard .check {
+  display: flex;
+  align-items: center;
+}
+.dashboard-event-form .event-dashboard .check label {
+  font-size: 24px !important;
+  margin-left: 20px;
+}
+.dashboard-event-form .event-dashboard .check input[type=checkbox] {
+  margin-left: 20px;
+}
+
+#user-registration {
+  width: 80% !important;
+  margin: 30px auto !important;
+}
+#user-registration .user-registration-MyAccount-navigation {
+  border-radius: 10px;
+  overflow: hidden;
+}
+#user-registration .user-registration-MyAccount-navigation ul li.is-active a {
+  border-color: var(--rose) !important;
 }
 
 @keyframes slide-left {
@@ -887,6 +1020,7 @@ input {
   }
   .event-card {
     flex-direction: column;
+    margin: 0 auto;
   }
   .event-card-info {
     width: 100%;
@@ -940,7 +1074,9 @@ input {
     padding: 15px;
     margin: 15px auto;
   }
-  .card-hover-text {
+  .card-hover-text,
+  .team-name {
+    font-size: 48px !important;
     bottom: 10%;
     left: 5% !important;
   }
@@ -951,6 +1087,14 @@ input {
     width: 48px;
     height: 48px;
   }
+  .event-inscription h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+  .event-inscription p {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
 }
 @media screen and (max-width: 600px) {
   :root {
@@ -960,23 +1104,16 @@ input {
   .tag {
     font-size: 12px !important;
   }
-  .nav-title > h1 {
-    font-size: 36px;
+  .nav-title h1 {
+    font-size: 24px !important;
   }
-  .nav-title > svg {
+  .nav-title svg {
     width: 1.5rem !important;
     height: 1.5rem !important;
   }
   .scroll-replacer {
     font-size: 60px;
     transform: skew(-14deg);
-  }
-  .user-registration-MyAccount-navigation-link--dashboard a {
-    border-radius: 10px 10px 0 0 !important;
-  }
-  .user-registration-MyAccount-navigation {
-    background-color: var(--rose-25) !important;
-    border-radius: 10px 10px 0 0;
   }
   .button svg,
   .connection-button svg {
@@ -991,6 +1128,12 @@ input {
   .scroll-wrapper span {
     font-size: 64px;
   }
+  .scroll-wrapper svg {
+    display: none;
+  }
+  .event-card {
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width: 550px) {
   .scroll-wrapper {
@@ -1003,7 +1146,7 @@ input {
   }
   .nav-title {
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 30px !important;
   }
   .nav-buttons {
     margin-right: 10px;
@@ -1021,10 +1164,23 @@ input {
   .event-card .description {
     font-size: 18px;
   }
+  .event-dashboard {
+    flex-direction: column;
+  }
 }
 @media screen and (max-height: 800px) {
   .header {
     padding: 0;
+  }
+  .event-card .event-card-info .title,
+  .event-card .event-card-info .description {
+    margin-bottom: 0;
+  }
+  .event-card .event-card-info .date {
+    margin-bottom: 5px;
+  }
+  .event-card .event-card-info .tags {
+    margin-top: 10px;
   }
 }
 @media screen and (max-height: 650px) {
@@ -1033,6 +1189,11 @@ input {
   }
   .scroll-wrapper span {
     font-size: 100px;
+  }
+}
+@media screen and (max-height: 530px) {
+  .scroll-content {
+    font-size: 12px;
   }
 }
 /* Tailwind class */
