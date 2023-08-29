@@ -1,0 +1,29 @@
+table.custom {
+    margin-bottom: 50px;
+}
+.custom th {
+    border: 2px solid black;
+}
+.custom td {
+    border: 1px solid black;
+}
+
+.custom th, td {
+    padding: 4px !important;
+    margin: 0;
+}
+
+input.custom {
+    border: 2px solid black;
+    padding: 4px;
+    background-color: transparent;
+}
+
+input.custom:hover {
+    background-color: #c1c1c1;
+}
+
+#search-custom {
+    width: 300px !important;
+    margin-top: 30px;
+}
